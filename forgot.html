@@ -1,117 +1,117 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Reset Password</title>
-
-    <style>
-        body {
-            margin: 0;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background-image: url(img/ll.jpg);
-            background-size: cover;
-            background-repeat: no-repeat;
-            font-family: Arial, sans-serif;
-        }
-
-        .box {
-            background-image: url(img/tt.jpg);
-            background-size: cover;
-            padding: 30px;
-            width: 460px;
-            border-radius: 10px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
-            color: white;
-        }
-
-        h1 {
-            text-align: center;
-        }
-
-        label {
-            display: block;
-            margin-top: 10px;
-        }
-
-        input {
-            width: 100%;
-            padding: 10px;
-            margin-top: 5px;
-        }
-
-        .actions {
-    display: flex;
-    justify-content: center;
-    gap: 25px;
-    margin-top: 25px;
-}
-.actions input:hover {
-    transform: scale(1.05);
-    background: #38f9d7;
-}
-
-
-.actions input[type="submit"],
-.actions input[type="reset"] {
-    width: 160px;          /* bigger width */
-    padding: 14px 0;       /* taller buttons */
-    background: #43e97b;
-    border: none;
-    cursor: pointer;
-    font-size: 18px;       /* bigger text */
-    font-weight: bold;
-    border-radius: 12px;   /* smooth rounded */
-    color: black;
-    transition: all 0.3s ease;
-}
-
-
-        .back {
-            display: block;
-            text-align: center;
-            margin-top: 20px;
-            color: white;
-            text-decoration: none;
-        }
-    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reset Password - Simple Login Page</title>
+    <meta name="description" content="Reset your password easily with our clean and secure reset interface.">
+    <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-<div class="box">
-    <h1>Reset Password</h1>
-
-    <form onsubmit="return validatePassword()">
-
-        <label for="password">New Password</label>
-        <input type="password" id="password" placeholder="Create new password" required>
-
-        <label for="confirmPassword">Confirm Password</label>
-        <input type="password" id="confirmPassword" placeholder="Confirm password" required>
-
-        <div class="actions">
-            <input type="submit" value="Confirm">
-            <input type="reset" value="Clear">
+<main class="auth-wrapper">
+    <!-- Brand / Header -->
+    <header class="auth-brand">
+        <div class="brand-badge" aria-hidden="true">
+            <svg fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 5.25a3 3 0 013 3m3 0a6 6 0 01-7.029 5.912c-.563-.097-1.159.026-1.563.43L10.5 17.25H8.25v2.25H6v2.25H2.25v-2.818c0-.597.237-1.17.659-1.591l6.499-6.499c.404-.404.527-1 .43-1.563A6 6 0 1121.75 8.25z" />
+            </svg>
         </div>
+        <h1>Reset Password</h1>
+        <p>Set a new password for your account</p>
+    </header>
 
-        <a href="login.html" class="back">Back to Login Page</a>
-    </form>
-</div>
+    <!-- Auth Card -->
+    <section class="auth-card" aria-label="Reset password form container">
+        <div id="resetAlert" class="alert-banner" role="alert" aria-live="polite"></div>
+
+        <form id="resetForm" class="auth-form" onsubmit="return validatePassword(event)">
+            <div class="form-group">
+                <label for="newPassword">New Password</label>
+                <div class="input-container">
+                    <input 
+                        type="password" 
+                        id="newPassword" 
+                        name="newPassword" 
+                        placeholder="Create a new password" 
+                        required 
+                        minlength="8" 
+                        autocomplete="new-password"
+                        autofocus>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="confirmPassword">Confirm Password</label>
+                <div class="input-container">
+                    <input 
+                        type="password" 
+                        id="confirmPassword" 
+                        name="confirmPassword" 
+                        placeholder="Re-enter your new password" 
+                        required 
+                        minlength="8" 
+                        autocomplete="new-password">
+                </div>
+            </div>
+
+            <div class="form-actions" style="margin-top: 12px;">
+                <button type="submit" class="btn btn-primary" style="flex: 2;">Confirm</button>
+                <button type="reset" class="btn btn-secondary" style="flex: 1;" onclick="clearAlert()">Clear</button>
+            </div>
+        </form>
+    </section>
+
+    <!-- Footer Links -->
+    <footer class="auth-footer">
+        <p>Remembered your password? <a href="login.html">Sign in</a></p>
+        <nav class="footer-nav" aria-label="Quick links">
+            <a href="index.html">Home</a>
+            <span>•</span>
+            <a href="create.html">Create an Account</a>
+        </nav>
+    </footer>
+</main>
 
 <script>
-function validatePassword() {
-    let password = document.getElementById("password").value;
-    let confirmPassword = document.getElementById("confirmPassword").value;
+function clearAlert() {
+    const alertEl = document.getElementById("resetAlert");
+    alertEl.className = "alert-banner";
+    alertEl.textContent = "";
+}
 
-    if (password !== confirmPassword) {
-        alert("Passwords do not match!");
+function validatePassword(event) {
+    if (event) event.preventDefault();
+    
+    const password = document.getElementById("newPassword").value;
+    const confirmPassword = document.getElementById("confirmPassword").value;
+    const alertEl = document.getElementById("resetAlert");
+
+    if (!password || !confirmPassword) {
+        alertEl.textContent = "Please fill in both password fields.";
+        alertEl.className = "alert-banner error";
         return false;
     }
 
-    alert("Password set successfully!");
-    window.location.href = "login.html"; // redirect
+    if (password.length < 8) {
+        alertEl.textContent = "Password must be at least 8 characters long.";
+        alertEl.className = "alert-banner error";
+        return false;
+    }
+
+    if (password !== confirmPassword) {
+        alertEl.textContent = "Passwords do not match. Please verify and try again.";
+        alertEl.className = "alert-banner error";
+        return false;
+    }
+
+    alertEl.textContent = "Password updated successfully! Redirecting to sign in...";
+    alertEl.className = "alert-banner success";
+    
+    setTimeout(function() {
+        window.location.href = "login.html";
+    }, 1200);
+
     return false;
 }
 </script>

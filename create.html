@@ -2,134 +2,134 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Sign Up</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-      body {
-    margin: 0;
-    min-height: 100vh;
-     
-    background-image: url(img/x.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;        
-    background-position: center;   
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-family: Arial, sans-serif;
-    color: white;
- 
-}
-
-        .box {
-            background-image : url(img/rr.avif);
-           
-    background-repeat: no-repeat;
-    background-size: cover;        
-    background-position: center; 
-            padding: 15px 30px;
-            width: 340px;
-            border-radius: 10px;
-            box-shadow: 0 15px 35px rgba(255, 12, 12, 0.2);
-            color: white;
-        }
-        
-        h2 { text-align: center; }
-        input { width: 100%; padding: 10px; margin: 10px 0; }
-        button {
-            width: 100%; padding: 10px; background: #43e97b;
-            border: none; color: #000; font-size: 16px; cursor: pointer;
-        }
-        button,
-input[type="submit"],
-input[type="reset"] {
-    width: 100%;
-    padding: 14px 0;          /* increase height */
-    background-color:linear-gradient(135deg,rgb(175, 122, 243) rgb(127, 240, 240)); /* professional blue */
-    color: #ffffff;
-    font-size: 17px;
-    font-weight: 600;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    ;
-}
-
-/* Hover effect */
-button:hover,
-input[type="submit"]:hover,
-input[type="reset"]:hover {
-    background-color: #1e40af;
-}
-
-      
-        .help-text {
-    margin-top: 4px;   
-    margin-bottom: 12px;
-    font-size: 13px;
-    color:white;
-}
-label {
-    font-weight: bold;
-    display: block;
-    margin-top: 12px;
-    opacity: 90%;
-    
-}
-.back{
-
-    color: bisque;
-}
-.ti{
-
-    border-radius: 10px;
-    padding: 15px 10px;
-    color:black;
-   
-
-  
-    
-}
-
-        
-
-    </style>
+    <title>Sign Up - Simple Login Page</title>
+    <meta name="description" content="Create a new account with our simple, accessible registration form.">
+    <link rel="stylesheet" href="style.css">
 </head>
-<body action="login.html" >
-<div class="box">
-    <h2>Sign Up</h2>
-    <form action="login.html">
+<body>
 
-
-        <label for="Username">Username:</label>
-        <input type="text" placeholder="Full Name" required>
-
-         <p class="help-text">Username may only contain alphanumeric characters or single hyphens, and cannot begin or end with a hyphen.</p>
-
-          <label for="email">Emai:</label>
-
-        <input type="email" placeholder="Email" required>
-          <label for="Password">Password:</label>
-
-        <input type="password" placeholder="Password" required minlength="8">
-
-        <p class="help-text">
-    Username may contain alphanumeric characters or single hyphens,and cannot begin or end with a hyphen.
-</p>
-
-    
- <div >
-   
-    </a><button type="submit" class="ti">Create Account</button>
-    <br><br>
-<div class="back">
-     <a href="login.html" style="color: rgb(213, 201, 236);"> Back</a><br>
-     </div>
-       
+<main class="auth-wrapper">
+    <!-- Brand / Header -->
+    <header class="auth-brand">
+        <div class="brand-badge" aria-hidden="true">
+            <svg fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19 7.5v3m0 0v3m0-3h3m-3 0h-3m-2.25-4.125a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zM4 19.235v-.11a6.375 6.375 0 0112.75 0v.109A12.318 12.318 0 0110.374 21c-2.331 0-4.512-.645-6.374-1.765z" />
+            </svg>
         </div>
-    </form>
-</div>
+        <h1>Create an Account</h1>
+        <p>Join today and start organizing your tasks</p>
+    </header>
+
+    <!-- Auth Card -->
+    <section class="auth-card" aria-label="Registration form container">
+        <div id="createAlert" class="alert-banner" role="alert" aria-live="polite"></div>
+
+        <form id="createForm" class="auth-form" onsubmit="return handleCreateAccount(event)">
+            <!-- Full Name / Username -->
+            <div class="form-group">
+                <label for="createUsername">Username</label>
+                <div class="input-container">
+                    <input 
+                        type="text" 
+                        id="createUsername" 
+                        name="username" 
+                        placeholder="Choose a username" 
+                        required 
+                        autocomplete="username" 
+                        autofocus>
+                </div>
+            </div>
+
+            <!-- Email -->
+            <div class="form-group">
+                <label for="createEmail">Email address</label>
+                <div class="input-container">
+                    <input 
+                        type="email" 
+                        id="createEmail" 
+                        name="email" 
+                        placeholder="name@company.com" 
+                        required 
+                        autocomplete="email">
+                </div>
+            </div>
+
+            <!-- Password -->
+            <div class="form-group">
+                <label for="createPassword">Password</label>
+                <div class="input-container">
+                    <input 
+                        type="password" 
+                        id="createPassword" 
+                        name="password" 
+                        placeholder="At least 8 characters" 
+                        minlength="8" 
+                        required 
+                        autocomplete="new-password">
+                </div>
+            </div>
+
+            <!-- Role Selection -->
+            <div class="form-group">
+                <label for="createRole">Role</label>
+                <select id="createRole" name="role" required>
+                    <option value="">Select your role</option>
+                    <option value="student">Student</option>
+                    <option value="admin">Admin</option>
+                </select>
+            </div>
+
+            <!-- Submit -->
+            <div class="form-actions" style="margin-top: 12px;">
+                <button type="submit" class="btn btn-primary" style="flex: 1;">Create account</button>
+            </div>
+        </form>
+    </section>
+
+    <!-- Footer Links -->
+    <footer class="auth-footer">
+        <p>Already have an account? <a href="login.html">Sign in</a></p>
+        <nav class="footer-nav" aria-label="Quick links">
+            <a href="index.html">Home</a>
+            <span>•</span>
+            <a href="forgot.html">Reset Password</a>
+        </nav>
+    </footer>
+</main>
+
+<script>
+function handleCreateAccount(event) {
+    if (event) event.preventDefault();
+    
+    const user = document.getElementById("createUsername").value.trim();
+    const email = document.getElementById("createEmail").value.trim();
+    const pass = document.getElementById("createPassword").value;
+    const role = document.getElementById("createRole").value;
+    const alertEl = document.getElementById("createAlert");
+
+    if (!user || !email || !pass || !role) {
+        alertEl.textContent = "Please fill out all required fields.";
+        alertEl.className = "alert-banner error";
+        return false;
+    }
+
+    if (pass.length < 8) {
+        alertEl.textContent = "Password must be at least 8 characters.";
+        alertEl.className = "alert-banner error";
+        return false;
+    }
+
+    alertEl.textContent = "Account created successfully! Redirecting to sign in...";
+    alertEl.className = "alert-banner success";
+    
+    setTimeout(function() {
+        window.location.href = "login.html";
+    }, 1200);
+
+    return false;
+}
+</script>
+
 </body>
 </html>

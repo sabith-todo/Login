@@ -3,131 +3,157 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Todo Projects</title>
-
+    <title>Projects Dashboard - Todo Web</title>
+    <meta name="description" content="Dashboard displaying projects and portfolio modules.">
+    <link rel="stylesheet" href="style.css">
     <style>
-        * {
-            box-sizing: border-box;
-            font-family: 'Times New Roman', Times, serif;
+        .dashboard-header {
+            width: 100%;
+            max-width: 1100px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 0;
+            margin-bottom: 32px;
         }
 
-        body {
-            margin: 0;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-
-            background-image: url(img/chat.png);
-            background-size: cover;
-            background-position: center;
-            color: azure;
-            padding: 40px;
+        .dashboard-brand {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--text-main);
         }
 
-        /* Card container */
-        .container {
+        .dashboard-nav {
             display: flex;
-            justify-content: center;
-            gap: 20px;
-            flex-wrap: wrap;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .dashboard-nav a {
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--text-secondary);
+            transition: color 0.15s ease;
+        }
+
+        .dashboard-nav a:hover {
+            color: var(--text-main);
+        }
+
+        .dashboard-container {
+            width: 100%;
+            max-width: 1100px;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 24px;
             flex: 1;
         }
 
-        /* Card */
-        .one {
-            background: linear-gradient(135deg, #6a5af9, #9f6cff);
-            color: white;
-            width: 260px;
-            padding: 20px;
-            border-radius: 16px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
-            transition: transform 0.3s ease;
+        .project-card {
+            background-color: var(--bg-surface);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-panel);
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
 
-        .one:hover {
-            transform: translateY(-10px);
+        .project-card h3 {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--text-main);
+            margin-bottom: 12px;
         }
 
-        .one h3 {
-            margin-bottom: 10px;
-        }
-
-        .one p {
+        .project-card p {
             font-size: 14px;
-            margin-bottom: 15px;
-            line-height: 1.5;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 20px;
+            flex: 1;
         }
 
-        .one button {
-            background: white;
-            color: #6a5af9;
-            border: none;
-            padding: 8px 14px;
-            border-radius: 8px;
-            cursor: pointer;
-            font-weight: bold;
+        .project-card .btn {
+            align-self: flex-start;
+            padding: 0 18px;
         }
 
-        /* Footer */
-        .footer {
-            background: rgb(65, 58, 126);
-            color: rgb(141, 138, 138);
+        .dashboard-footer {
+            width: 100%;
+            max-width: 1100px;
             text-align: center;
-            padding: 12px 20px;
-            margin-top: 30px;
-            margin-bottom: -35px;
-            opacity: 50%;
-            height: 80.5px;
+            padding: 32px 0 16px;
+            margin-top: 40px;
+            font-size: 13px;
+            color: var(--text-muted);
         }
 
-        .footer p {
-            margin: 5px 0;
+        .dashboard-footer p {
+            margin: 4px 0;
+        }
+
+        .dashboard-footer a {
+            color: var(--text-secondary);
+            text-decoration: none;
+        }
+
+        .dashboard-footer a:hover {
+            text-decoration: underline;
         }
     </style>
 </head>
+<body>
 
-<body >
-  
+    <header class="dashboard-header">
+        <div class="dashboard-brand">Todo Web Projects</div>
+        <nav class="dashboard-nav" aria-label="Dashboard navigation">
+            <a href="index.html">Home</a>
+            <a href="login.html" class="btn btn-secondary" style="height: 36px; padding: 0 14px; font-size: 13px;">Log out</a>
+        </nav>
+    </header>
 
-    <div class="container">
-
-        <div class="one">
-            <h3>IOT Project</h3>
-            <p>IoT-based smart farming monitoring (software only) is a digital system that uses simulated sensor data and software tools to monitor farm conditions like soil moisture, temperature, humidity, and weather. The system displays data on a web or mobile dashboard, analyzes it using predefined rules, and generates alerts or irrigation decisions automatically. It helps farmers monitor crops, save water, and improve productivity without using physical IoT hardware, making it ideal for academic and demo projects. 🌱</p>
-            <a href="https://github.com/sabith-todo/IOT-Based-smart-farming-monitor">
-                <button>Show</button>
+    <main class="dashboard-container">
+        <!-- Project 1 -->
+        <article class="project-card">
+            <div>
+                <h3>IoT-Based Smart Farming Monitor</h3>
+                <p>A digital software system simulating sensor telemetry (soil moisture, temperature, humidity) with real-time dashboard analytics and automated irrigation decision triggers.</p>
+            </div>
+            <a href="https://github.com/sabith-todo/IOT-Based-smart-farming-monitor" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+                View Project
             </a>
-        </div>
+        </article>
 
-        <div class="one">
-            <h3>Academic Project</h3>
-            <p>This academic application includes an admin allocation page for managing users and resources, an announcement page for sharing important updates, and a home page that provides easy navigation to all modules. It features a secure login page, material and notes pages for accessing study resources, a timetable page for scheduling, and role-based services to ensure appropriate access for admins and students. The system is designed to support effective academic management and enhance the overall learning experience.</p>
-            <a href="https://github.com/sabith-todo/App-">
-                <button>Show</button>
+        <!-- Project 2 -->
+        <article class="project-card">
+            <div>
+                <h3>Academic Portal Application</h3>
+                <p>An academic management platform featuring admin user allocation, announcement distribution, course notes repository, and role-based access control for students and administrators.</p>
+            </div>
+            <a href="https://github.com/sabith-todo/App-" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+                View Project
             </a>
-        </div>
+        </article>
 
-        <div class="one">
-            <h3>Todo Rover Project</h3>
-            <p>I am developing a task-based autonomous rover that is capable of performing assigned tasks automatically using programmed logic and intelligent decision-making. The rover operates with minimal human intervention and is designed to navigate, monitor, and execute tasks efficiently. This project focuses on autonomy, reliability, and practical application in real-world environments.</p>
-             <a href="https://github.com/sabith-todo/reaction">
-                <button>Show</button>
+        <!-- Project 3 -->
+        <article class="project-card">
+            <div>
+                <h3>Autonomous Task Rover</h3>
+                <p>An intelligent task-based autonomous rover software simulation designed to navigate environments, monitor metrics, and perform programmed logic tasks with minimal intervention.</p>
+            </div>
+            <a href="https://github.com/sabith-todo/reaction" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+                View Project
             </a>
-        </div>
+        </article>
+    </main>
 
-    </div>
-
-    <footer class="footer">
-        <div style="color: bisque;">
-             <p>Author: Sabith-Todo</p>
-             <p>© 2026 Todo Web. All rights reserved.</p>
-             <a href="mailto:sabithtodo@gmail.com">
-             <p style="color: rgb(231, 215, 215);">Email: sabithtodo@gmail.com</p>
-        </a>
-        </div>
-        
+    <footer class="dashboard-footer">
+        <p>Author: Sabith</p>
+        <p>&copy; 2026 Todo Web. All rights reserved.</p>
+        <p><a href="mailto:sabithtodo@gmail.com">sabithtodo@gmail.com</a></p>
     </footer>
-   
 
 </body>
 </html>

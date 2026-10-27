@@ -1,0 +1,420 @@
+/* ==========================================================================
+   Simple Login Page - Core Stylesheet
+   Modern, accessible, responsive design built with HTML5 & CSS3
+   ========================================================================== */
+
+:root {
+  --bg-ground: #f8fafc;
+  --bg-surface: #ffffff;
+  --bg-subtle: #f1f5f9;
+  
+  --border-subtle: #e2e8f0;
+  --border-input: #cbd5e1;
+  --border-focus: #0f172a;
+  
+  --text-main: #0f172a;
+  --text-secondary: #475569;
+  --text-muted: #64748b;
+  
+  --btn-primary-bg: #0f172a;
+  --btn-primary-hover: #1e293b;
+  --btn-primary-text: #ffffff;
+  
+  --btn-secondary-bg: #ffffff;
+  --btn-secondary-hover: #f1f5f9;
+  --btn-secondary-text: #334155;
+  --btn-secondary-border: #cbd5e1;
+  
+  --state-success-bg: #f0fdf4;
+  --state-success-text: #166534;
+  --state-success-border: #bbf7d0;
+  
+  --state-error-bg: #fef2f2;
+  --state-error-text: #991b1b;
+  --state-error-border: #fecaca;
+  
+  --radius-panel: 12px;
+  --radius-field: 8px;
+  --radius-btn: 8px;
+  
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+/* Base Reset & Layout */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100dvh;
+  background-color: var(--bg-ground);
+  color: var(--text-main);
+  font-family: var(--font-sans);
+  font-size: 15px;
+  line-height: 1.5;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 24px 16px;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Main Auth Wrapper */
+.auth-wrapper {
+  width: 100%;
+  max-width: 440px;
+  margin: 0 auto;
+}
+
+/* Brand / Top Header */
+.auth-brand {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.brand-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  background-color: var(--btn-primary-bg);
+  color: #ffffff;
+  margin-bottom: 12px;
+}
+
+.brand-badge svg {
+  width: 22px;
+  height: 22px;
+}
+
+.auth-brand h1 {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--text-main);
+  letter-spacing: -0.02em;
+}
+
+.auth-brand p {
+  font-size: 14px;
+  color: var(--text-muted);
+  margin-top: 4px;
+}
+
+/* Card Surface */
+.auth-card {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-panel);
+  padding: 32px 28px;
+}
+
+/* Feedback Alert Banner */
+.alert-banner {
+  display: none;
+  padding: 10px 14px;
+  border-radius: var(--radius-field);
+  font-size: 13px;
+  font-weight: 500;
+  margin-bottom: 20px;
+}
+
+.alert-banner.error {
+  display: block;
+  background-color: var(--state-error-bg);
+  color: var(--state-error-text);
+  border: 1px solid var(--state-error-border);
+}
+
+.alert-banner.success {
+  display: block;
+  background-color: var(--state-success-bg);
+  color: var(--state-success-text);
+  border: 1px solid var(--state-success-border);
+}
+
+/* Form Styles */
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-group label {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-main);
+}
+
+/* Inputs & Select */
+.input-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.input-container input,
+.form-group select {
+  width: 100%;
+  height: 42px;
+  padding: 0 12px;
+  font-size: 14px;
+  font-family: inherit;
+  color: var(--text-main);
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-input);
+  border-radius: var(--radius-field);
+  transition: border-color 0.15s ease;
+}
+
+.input-container input:hover,
+.form-group select:hover {
+  border-color: #94a3b8;
+}
+
+.input-container input:focus,
+.form-group select:focus {
+  outline: 2px solid var(--border-focus);
+  outline-offset: 1px;
+  border-color: var(--border-focus);
+}
+
+/* Password Toggle Button */
+.password-toggle-btn {
+  position: absolute;
+  right: 8px;
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+}
+
+.password-toggle-btn:hover {
+  color: var(--text-main);
+}
+
+.password-toggle-btn:focus-visible {
+  outline: 2px solid var(--border-focus);
+  outline-offset: 1px;
+}
+
+.password-toggle-btn svg {
+  width: 18px;
+  height: 18px;
+}
+
+/* Checkbox Row & Forgot Password */
+.form-options-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  font-size: 13px;
+  margin-top: 2px;
+}
+
+.checkbox-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  color: var(--text-secondary);
+  user-select: none;
+}
+
+.checkbox-label input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  accent-color: var(--color-primary);
+  cursor: pointer;
+}
+
+.forgot-link {
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.15s ease;
+}
+
+.forgot-link:hover {
+  color: var(--text-main);
+  text-decoration: underline;
+}
+
+.forgot-link:focus-visible {
+  outline: 2px solid var(--border-focus);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* Button Group */
+.form-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.btn {
+  height: 42px;
+  font-size: 14px;
+  font-weight: 600;
+  font-family: inherit;
+  border-radius: var(--radius-btn);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+}
+
+.btn-primary {
+  flex: 2;
+  background-color: var(--btn-primary-bg);
+  color: var(--btn-primary-text);
+  border: 1px solid var(--btn-primary-bg);
+}
+
+.btn-primary:hover {
+  background-color: var(--btn-primary-hover);
+  border-color: var(--btn-primary-hover);
+}
+
+.btn-primary:focus-visible {
+  outline: 2px solid var(--border-focus);
+  outline-offset: 2px;
+}
+
+.btn-secondary {
+  flex: 1;
+  background-color: var(--btn-secondary-bg);
+  color: var(--btn-secondary-text);
+  border: 1px solid var(--btn-secondary-border);
+}
+
+.btn-secondary:hover {
+  background-color: var(--btn-secondary-hover);
+  border-color: #94a3b8;
+}
+
+.btn-secondary:focus-visible {
+  outline: 2px solid var(--border-focus);
+  outline-offset: 2px;
+}
+
+/* Demo Credentials Hint Box */
+.demo-credentials-box {
+  margin-top: 24px;
+  padding: 12px 14px;
+  background-color: var(--bg-subtle);
+  border-radius: var(--radius-field);
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+
+.demo-credentials-title {
+  font-weight: 600;
+  color: var(--text-main);
+  margin-bottom: 4px;
+}
+
+.demo-credentials-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.demo-cred-row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.demo-cred-row code {
+  background-color: #ffffff;
+  padding: 1px 5px;
+  border-radius: 4px;
+  border: 1px solid var(--border-subtle);
+  color: var(--text-main);
+  font-family: inherit;
+  font-size: 11px;
+}
+
+/* Card Footer Links */
+.auth-footer {
+  text-align: center;
+  margin-top: 24px;
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+
+.auth-footer a {
+  color: var(--text-main);
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+.auth-footer a:hover {
+  text-decoration: underline;
+}
+
+.auth-footer a:focus-visible {
+  outline: 2px solid var(--border-focus);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+.footer-nav {
+  margin-top: 12px;
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+}
+
+.footer-nav a {
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.footer-nav a:hover {
+  color: var(--text-main);
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+  body {
+    padding: 16px 12px;
+  }
+  
+  .auth-card {
+    padding: 24px 20px;
+  }
+  
+  .auth-brand h1 {
+    font-size: 22px;
+  }
+  
+  .form-actions {
+    flex-direction: column;
+  }
+  
+  .btn-primary, .btn-secondary {
+    width: 100%;
+    flex: unset;
+  }
+}
